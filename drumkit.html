@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="drumkit.css">
+</head>
+<body onkeydown = "playKey(event)" onclick="playSound(event)">
+	<div class="group-keys">
+		<div>
+			<button class="key" type="button" id="clap">A
+				<div  class="sound">CLAP</div>
+			</button>
+			<button class="key" type="button" id="hihat">S
+				<div class="sound">HIHAT</div>
+			</button>
+			<button class="key" type="button" id="kick">D
+				<div class="sound">KICK</div>
+			</button>
+			<button class="key" type="button" id="openhat">F
+				<div class="sound">OPENHAT</div>
+			</button>
+			<button class="key" type="button" id="boom">G
+				<div class="sound">BOOM</div>
+			</button>
+			<button class="key" type="button" id="ride">H
+				<div class="sound">RIDE</div>
+			</button>
+			<button class="key" type="button" id="snare">J
+				<div class="sound">SNARE</div>
+			</button>
+			<button class="key" type="button" id="tom">K
+				<div class="sound">TOM</div>
+			</button>
+			<button class="key" type="button" id="tink">L
+				<div class="sound">TINK</div>
+			</button>
+		</div>
+	</div>
+	
+	<audio data-key="65" id="clap" src="sounds/clap.wav"></audio>
+  	<audio data-key="83" id= "hihat" src="sounds/hihat.wav"></audio>
+  	<audio data-key="68" id="kick" src="sounds/kick.wav"></audio>
+  	<audio data-key="70" id="openhat" src="sounds/openhat.wav"></audio>
+  	<audio data-key="71" id="boom" src="sounds/boom.wav"></audio>
+  	<audio data-key="72" id="ride" src="sounds/ride.wav"></audio>
+  	<audio data-key="74" id="snare" src="sounds/snare.wav"></audio>
+  	<audio data-key="75" id="tom" src="sounds/tom.wav"></audio>
+  	<audio data-key="76" id="tink" src="sounds/tink.wav"></audio>
+	
+	<script>		
+		function getID(element){
+            return element.id;
+		}
+        
+        function getEventId(e){
+            //console.log(e.target.id);
+            //console.log(typeof(e.target.id)); 
+            console.log(e.target);
+            return e.target.id; 
+        }
+        
+        function getKey(e){
+            return e.which;   
+        }
+		
+		function playSound(e){
+            document.querySelector('audio#'+ getEventId(e)).play();
+			//document.querySelector('audio#'+ getID(element)).play();
+		}
+        
+        function playKey(e){
+            document.querySelector('audio[data-key="'+ getKey(e) +'"]').play();   
+        }
+	</script>
+</body>
+</html>
